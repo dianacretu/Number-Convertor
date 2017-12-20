@@ -1,0 +1,65 @@
+	*****************************************
+        *               README                  *
+        *                                       *
+        *       Nume proiect: Tema 1 IOCLA      *
+        *       Autor: Diana Cretu              *
+        *       Grupa: 322 CC                   *
+        *       Deadline: Joi, 16.11.2017     ``*
+        *                                       *
+        *                                       *
+        *****************************************
+
+1. Ierarhia proiectului
+
+	Codul sursa este structurat in fisierul tema1.asm.
+
+
+2. Descrierea aplicatiei
+
+	Programul scris in limbaj de asamblare efectueaza
+conversia unor numere din baza 10 intr-o baza din intervalul 
+[2, 16].
+
+
+3. Implementare
+
+	Se salveaza in registrul eax numerele din nums_array,
+iar in registrul ebx cele din base_array, registre folosite
+la instructiunea div. Acest lucru se realizeaza in bucla take_nr.
+Faptul ca au fost salvate toate numerele se verifica la eticheta
+end_take_nr, cu ajutorul registrului ecx, incrementat in bucla take_nr,
+acesta fiind comparat cu nums (numarul elementelor din cei doi vectori).
+Bucla take_nr este considerata de unde se afla eticheta take_nr pana la
+instructiunea jmp take_nr.
+	In caz ca baza din ebx se afla in afara intervalului [2, 16], se 
+sare la eticheta baza_incorecta, unde cu ajutorul functiei printf se 
+afiseaza "Baza incorecta".
+	Cea de-a doua bucla convert (incepe la eticheta convert si se
+termina la instructiunea jmp convert), transforma numarul in baza din
+registrul ebx. Acest lucru se realizeaza prin impartiri succesive la baza,
+conditia de iesire din bucla fiind indeplinita atunci cand deimpartitul 
+devine mai mic decat impartitorul. Restul este salvat in registrul edx si
+pus pe stiva, iar catul este salvat in eax. Se repeta acest pas pana cand
+numarul din eax va fi mai mic decat cel din ebx. Atunci, se sare la eticheta
+stop, unde daca eax este diferit fata de 0 se adauga pe stiva, reprezentand
+ultimul rest.
+	Pe stiva se aduga resturile sub forma de caractere, de aceea se adauga
+'0'. 
+	Pentru numerele peste 9 se realizeaza conversia in literele a, b, c,
+d, e la etichetele to_char_edx si to_char_eax.
+	La eticheta print se afiseaza resturile salvate pe stiva. Afisate in
+orinde inversa, acestea compun noul numar in baza salvata in ebx. Contorul edi
+este folosit in bucla convert pentru a afla lungimea numarului (cate numere 
+trebuie printate din stiva).
+
+
+	*****************************************
+        *               END README              *
+        *                                       *
+        *       Nume proiect: Tema 1 Iocla      *
+        *       Autor: Diana Cretu      	*
+        *       Grupa: 322 CC                   *
+        *       Deadline: Joi, 16.11.2017	*
+        *                                       *
+        *                                       *
+        *****************************************	
